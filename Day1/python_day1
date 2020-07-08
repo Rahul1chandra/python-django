@@ -1,0 +1,101 @@
+Programming Language:
+				
+				High level language:
+						>  Readable 
+						>  Easy to understand and debugging 
+						>  python, java, C, C++, javascript ..............................
+ 
+				Low level Language:
+						>  not much readable 
+						>  not easy to understand and debug
+						>  fortran, etc.. 
+
+LLL == >
+
+      10101010
+    + 10000000
+________________
+
+
+ 001 10000 11111 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+HLL === >  6+ 5 = 11
+
+		if , else ,
+		while
+		for 
+		elif
+		switch, case , break , continue 
+
+##############################################################################
+
+
+Python Advantages:
+	
+	we can use python server side programming (django - framework ),
+	we can use for automations/scripting 
+	we can use for ML and AI
+
+################################################################################
+
+
+Data type in python:
+		
+		int				12 
+		float			12.5
+		string          "expo data labs"
+		bool			True/ False
+		user defined class <>		.. any user/ programmer written class ..
+
+* Casting *
+	converint one data type object to an another object
+
+##################################################################################
+Operator 
+		+, -, //, /, %, |, & ^, << , >>
+
+
+		2 ====   0010
+		1 ====   0001
+		|/or ==	 0011  (represent as 3)	
+
+
+##################################################################################	
+
+
+OOP's (python )
+	> class
+	> object
+	> Inheritance 
+	> polymorphism
+	> Data abstraction
+    > Encapsulation
+
+    overriding
+    overloading
+
+    Execption handling 
+
+    mutable datatype , immutable datatype 
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
