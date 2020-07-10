@@ -8,8 +8,8 @@
 class Add:
 	def summ(*arg, **kwargs):  ### special parement for python to holds the n no. of argument 
 		sum_count = 0
-		for each_no in arg:
-			print (each_no)
+                for each_no in arg[1:]:
+			sum_count += each_no
 		print (kwargs)  ### dictionry  {"var1" :"arg1", "var2": "arg2"}
 		return (sum_count)
 
