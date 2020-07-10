@@ -1,0 +1,27 @@
+Project idea
+
+	Event mangement System
+
+			> user will able to create /schedule the meeting 
+			> user will able to invite to his/her friend
+
+			> input event , will display in our calendar 
+							user has also previlaage to add , edit the existing events 
+
+			> Full calendar 				
+
+
+	## python automations ## 
+			> sms send 					(twillio)
+			> email notification 		(gmail account )
+
+
+
+## rahul1chandra@gmail.com
+## Model relationshil (ER modeling ) Pk, FK
+		user , roles, group (  )
+
+
+		group seller ()
+
+		group buyer  () 
