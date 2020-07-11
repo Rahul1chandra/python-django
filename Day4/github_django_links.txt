@@ -1,0 +1,7 @@
+Follow the link to create the github account 
+    > https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
+
+Django Documentations
+    > https://docs.djangoproject.com/en/2.2/
+
+    
