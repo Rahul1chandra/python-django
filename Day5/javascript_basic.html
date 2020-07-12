@@ -1,0 +1,57 @@
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <head>
+        <title>My first applications  </title>
+    </head>
+    <body>
+        <h1>Welcome to the  class of HTMl Css JAVASCRIPT </h1>
+        <p>
+            <table border="1px">
+<tr>
+
+<td>JAVASCRIPT</td><td>langauage of HTML and web</td>
+</tr>
+<tr>
+    <td> HTML  </td> <td>define the content</td>
+</tr>
+<tr>
+
+    <td> javascript </td> <td>: defines the behaviour of our web page (events, change color, play css )</td>
+</tr>
+<tr>
+
+    <td>CSS</td> <td>: responsible for styling (color, font , size, attribute.......)</td>
+</tr>       
+        </table>
+        </p>
+
+Date:  <input type="text" id="datavalue" value="">
+
+<button onclick="add_date()" style="color: red;" id="btn"> click to get the date  </button>
+
+
+
+<script>
+    function add_date(){
+        alert("triggered ");
+        setInterval( function(){document.getElementById("datavalue").value = new Date();
+        
+        if (document.getElementById("btn").style.color === "red"){
+            document.getElementById("btn").style.color = "black";
+        }
+        else{
+            document.getElementById("btn").style.color = "red";
+        }
+        
+        }, 1000);
+        
+    }
+
+
+
+
+
+</script>
+
+    </body>
+</html>

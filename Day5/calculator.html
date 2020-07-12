@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title> My calculator </title>
+
+    <style>
+    tr {
+                background-color: #4CAF50;
+    }
+    </style>
+</head>
+<body>
+
+
+
+<div id="divid" style="align-content: center;">   
+<table border="1px">
+    Display : <input type="text" id="result" value="">
+    <tr>
+        <td>  <input type="button" value="+" onclick="display('+')" /></td>
+        <td>  <input type="button" value="-" onclick="display('-')" /></td>
+        <td>  <input type="button" value="/" onclick="display('/')" /></td>
+        <td>  <input type="button" value="*" onclick="display('*')" /></td>
+        
+    </tr>
+
+    <tr>
+        <td>  <input type="button" value="1" onclick="display('1')" /></td>
+        <td>  <input type="button" value="2" onclick="display('2')"/></td>
+        <td>  <input type="button" value="3" onclick="display('3')" /></td>
+        <td>  <input type="button" value="4" onclick="display('4')" /></td>
+    </tr>
+    <tr>
+        <td>  <input type="button" value="5" onclick="display('5')" /></td>
+        <td>  <input type="button" value="6" onclick="display('6')" /></td>
+        <td>  <input type="button" value="7" onclick="display('7')" /></td>
+        <td>  <input type="button" value="8" onclick="display('8')" /></td>
+    </tr>
+
+    <tr>
+        <td>  <input type="button" value="9" onclick="display('9')" /></td>
+        <td>  <input type="button" value="cls" onclick="clear_screen('cls')" /></td>
+        <td>  <input type="button" value="." onclick="display('.')" /></td>
+        <td>  <input type="button" value="solve" onclick="solve()"  />  </td>
+    </tr>
+</table>
+
+</div>
+
+<script>
+function display(value_input){
+    document.getElementById("result").value += value_input;
+}
+
+function solve(){
+    var expression  =  document.getElementById("result").value;
+    alert(eval(expression));
+}
+
+
+function clear_screen(){
+    document.getElementById("result").value = "";
+}
+
+
+</script>
+
+
+</body>
+</html>

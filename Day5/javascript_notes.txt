@@ -1,0 +1,7 @@
+Selectors  (based on the selections we can modifie the content of an appliation )
+           (  handling html content , event, )
+
+
+            1) id               (unique elememt in any web page)
+            2) class            (non-unique elememt in any web page)
+            3) tag               (non-unique elememt in any web page) 
