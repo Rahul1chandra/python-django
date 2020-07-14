@@ -1,0 +1,52 @@
+
+Django Content:
+    1) Installations of django and introduction (MVC and MVT--(   template  for non- restfull api ) )
+    2) Middleware (uses of middelware )
+                    if we not authenticated 
+                                we are trying to access our user space
+                                ### middlware verifies that the user is authenticated ###
+                                if not 
+                                    navigate user to the login page
+                                else:
+                                    navigate user to the dashboard
+
+
+
+    3) Model  --- (database ), orm quries vs sql 
+    4) view   --- (business logic of an application)
+    5) **Authentication (
+            api Authentication,  
+            Basic authentication, (username and password based authentications)
+            api key authentication, 
+            social media based authentication,
+            OAuth based Authentication
+            )
+    6) Singals event (triggers in db operations )
+        post transaction 
+        pre transaction
+
+    7) Third party usage of api's (smtp gmail api )
+    
+
+    9) ORM vs ODM vs sql 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Django Missed topic 
+    1) 
+
+
+Python Missed Topic
+    1) static method and class method and instance method
+Problem solving 
