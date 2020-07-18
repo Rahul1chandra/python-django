@@ -1,0 +1,109 @@
+{% load static %}
+<html>
+    <head>
+        <title>
+            event page 
+        </title>
+        <script src="{% static 'js/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ </head>
+<body>
+<h1> Event Page  </h1>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        Event name: <input type="text" id="event_name">
+      </div>
+      <div class="col-sm">
+        Event place: <input type="text" id="event_place">
+      </div>
+      <div class="col-sm">
+        <input type="button" value="submit" class="btn btn-primary" onclick="event_save_edit_delete('add')"> 
+      </div>
+    </div>
+  </div>
+
+
+<!-- <form method="post"> -->
+<!-- event name: <input type="text" id="event_name" id="eventnameid">
+event place: <input type="text" id="event_place" id="eventpalceid">
+<input type="button" value="submit" onclick="save()">  -->
+<!-- </form> -->
+<br>
+<hr>
+<div class="container">
+<table border="2px">
+    <tr> 
+        <td>ID</td> <td>event_name</td><td>event_place</td>
+        <td> edit </td>
+        <td> delete</td>
+    </tr>
+    {% for each_event in event_list %}
+    <tr> 
+        <td> {{each_event.event_id}}  </td> <td> {{each_event.event_name}} </td><td>{{each_event.event_place}}</td>  
+        <td> <input type="button" value="edit" class="btn btn-warning" onclick="edit(this)"> </td> 
+        <td> <input type="button" value="Delete" class="btn btn-danger" onclick="event_save_edit_delete('delete', '{{each_event.event_id}}')"> </td>                
+    </tr>
+    {% endfor %}
+
+</table>
+</div>
+
+<script>
+  function event_save_edit_delete(op, id=null){
+
+      
+       var data = {};
+       if (op === 'add'){
+           data = { 
+                    "operation": "add", 
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    "event_name": $('#event_name').val(),
+                    "event_place": $('#event_place').val(),
+                }
+       } 
+       else{
+           data = {
+                    "operation": "delete",
+                    "event_id": id,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',                    
+                }
+       }
+        $.ajax({
+                url: "/eventpage/",
+                type: "POST",
+                data: data,
+                success: function() {
+                    window.location.reload()   // just to get the updated value from the database
+                },
+                error: function() {
+                        console.log(" Inside error ");    
+                },
+            })
+        }
+
+        function edit(event){
+            debugger; 
+            var event_id = event.parentElement.parentElement.cells[0].innerText;
+            var event_name = event.parentElement.parentElement.cells[1].innerText;
+            var event_place = event.parentElement.parentElement.cells[2].innerText;
+
+
+            // $('#exampleModalLabel').on('shown.bs.modal', function () {
+            //         //$('#myInput').trigger('focus')
+            // })
+
+
+
+        }
+</script>
+
+
+
+
+
+</body>
+</html>
