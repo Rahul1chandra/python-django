@@ -23,7 +23,7 @@ class EventView(View):
         for events in event_obj:
             response_list.append({"event_id": events.event_id, "event_name": events.event_name, "event_place": events.event_place })
         # print (response_list)
-        return render(request,  'event_page.html', context={"event_list": response_list} )
+        return render(request,  'event_page.html', context={"event_list": response_list, "logged_in":request.user.get_username() } )
     
     
     def post(self, request):
@@ -37,6 +37,15 @@ class EventView(View):
             event_obj = Event(event_name= event_name, event_place= event_place)
             event_obj.save()
             return JsonResponse({"create":True, "status_code": 200, "created_by": request.user.username })
+        elif request.POST.get('operation') == 'edit':
+            # import ipdb; ipdb.set_trace()
+            # print ("inside my edit ...")
+            edit_obj = Event.objects.get(event_id = request.POST.get('event_id'))
+            edit_obj.event_name = request.POST.get('event_name')
+            edit_obj.event_place = request.POST.get('event_place')
+            edit_obj.save()
+            return JsonResponse({"create":True, "status_code": 201, "created_by": request.user.username })
+  
         else:
             event = Event.objects.get(event_id= request.POST.get('event_id'))
             event.delete()

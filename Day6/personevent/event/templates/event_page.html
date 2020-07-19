@@ -9,21 +9,42 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
  </head>
 <body>
-<h1> Event Page  </h1>
+
+    <div class="alert alert-primary" role="alert">
+        <h1> Event Management System  <span class="font-italic float-sm-right"> {{logged_in}} </span>
+            
+        </h1>
+       <marquee> <span id="current_time">  </span> </marquee>
+
+
+      </div>
+
+
 
 
 <div class="container">
     <div class="row">
       <div class="col-sm">
-        Event name: <input type="text" id="event_name">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Event name:</span>
+            <input type="text" id="event_name" class="form-control">
+        </div>
       </div>
       <div class="col-sm">
-        Event place: <input type="text" id="event_place">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Event place: </span>
+            <input type="text" id="event_place" class="form-control">
+        </div>
       </div>
+      
       <div class="col-sm">
         <input type="button" value="submit" class="btn btn-primary" onclick="event_save_edit_delete('add')"> 
       </div>
     </div>
+
+
+
+    
   </div>
 
 
@@ -35,11 +56,11 @@ event place: <input type="text" id="event_place" id="eventpalceid">
 <br>
 <hr>
 <div class="container">
-<table border="2px">
+<table class="table table-dark">
     <tr> 
-        <td>ID</td> <td>event_name</td><td>event_place</td>
-        <td> edit </td>
-        <td> delete</td>
+        <td>ID</td> <td>Event_name</td><td>Event_place</td>
+        <td> Edit </td>
+        <td> Delete</td>
     </tr>
     {% for each_event in event_list %}
     <tr> 
@@ -51,6 +72,55 @@ event place: <input type="text" id="event_place" id="eventpalceid">
 
 </table>
 </div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!-- <h4 class="modal-title">Modal Header</h4> -->
+        </div>
+        <div class="modal-body">
+
+
+<!-- <div class="container"> -->
+    <!-- <div class="row"> -->
+        Event_name: <input type="text" id="edit_event_name">
+        <br>
+        Event place: <input type="text" id="edit_event_place">
+        <input type="hidden" value="" id="edit_id">
+        <br>
+        <input type="button" value="submit" class="btn btn-primary" onclick="event_save_edit_delete('edit')"> 
+        <br>
+    <!-- </div> -->
+        <!-- <input type="button" value="submit" class="btn btn-primary" onclick="event_save_edit_delete('add')">  -->
+      
+    <!-- </div> -->
+  </div>
+          
+
+
+        </div>
+        <div class="modal-footer">
+            <!-- <input type="button" value="submit" class="btn btn-primary" onclick="event_save_edit_delete('add')">  -->
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+
+
+
 
 <script>
   function event_save_edit_delete(op, id=null){
@@ -64,7 +134,16 @@ event place: <input type="text" id="event_place" id="eventpalceid">
                     "event_name": $('#event_name').val(),
                     "event_place": $('#event_place').val(),
                 }
-       } 
+       }
+       else if(op === 'edit') {
+                data = {
+                    'operation': 'edit',
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    "event_name": $('#edit_event_name').val(),
+                    "event_place": $('#edit_event_place').val(),
+                    "event_id" :  $('#edit_id').val()
+                }
+       }
        else{
            data = {
                     "operation": "delete",
@@ -86,19 +165,26 @@ event place: <input type="text" id="event_place" id="eventpalceid">
         }
 
         function edit(event){
-            debugger; 
+            
             var event_id = event.parentElement.parentElement.cells[0].innerText;
             var event_name = event.parentElement.parentElement.cells[1].innerText;
             var event_place = event.parentElement.parentElement.cells[2].innerText;
+            $("#myModal").modal('show');
 
+            $('#edit_event_name').val(event_name);
+            $('#edit_event_place').val(event_place);
 
-            // $('#exampleModalLabel').on('shown.bs.modal', function () {
-            //         //$('#myInput').trigger('focus')
-            // })
+            $('#edit_id').val(event_id);
 
 
 
         }
+
+        setInterval(function(){ 
+        var date = new Date();
+        $('#current_time').text(date.toString());
+        }, 1000)
+        
 </script>
 
 
