@@ -52,16 +52,18 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form">
+				<!-- <form class="login100-form validate-form" method="post"  action="/"> -->
+					
+					<div class="validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Enter username">
+						<input class="input100" type="text" name="username" placeholder="Enter username" id="username_id">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Enter password">
+						<input class="input100" type="password" name="pass" placeholder="Enter password" id="password_id">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -86,11 +88,12 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" onclick="call_login()">
 							Login
 						</button>
 					</div>
-				</form>
+				</div>
+				<!-- </form> -->
 			</div>
 		</div>
 	</div>
@@ -104,22 +107,45 @@
 <script src="{% static 'js/vendor/bootstrap/js/popper.js' %}"></script>
 <script src="{% static 'js/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 <!--===============================================================================================-->
-<script src="{% static 'js/vendor/select2/select2.min.js' %}"></script>
+<!-- <script src="{% static 'js/vendor/select2/select2.min.js' %}"></script> -->
 <!--===============================================================================================-->
 <script src="{% static 'js/vendor/daterangepicker/moment.min.js' %}"></script>
 <script src="{% static 'js/vendor/daterangepicker/daterangepicker.js' %}"></script>
 <!--===============================================================================================-->
 <script src="{% static 'js/vendor/countdowntime/countdowntime.js' %}"></script>
-<!--===============================================================================================-->
+<!--=================================$==============================================================-->
 <script src="{% static 'js/main.js' %}"></script>
 
 </body>
 
 
 <script>
+call_login = () => {
 
-
-
-
+	$.ajax({
+                url: "/",
+                type: "POST",
+                data: {
+					"username": $('#username_id').val(),
+					"password": $('#password_id').val(),
+					csrfmiddlewaretoken: '{{ csrf_token }}',
+				},
+                success: function(data) {
+					if (data.user_auth){
+						// user is authenticated
+						alert("welcome user ");
+						window.location = '/eventpage/';
+					}
+					else{
+						alert("Error username or password");
+						// user is not autheticated
+					}
+                    //window.location.reload();   // just to get the updated value from the database
+                },
+                error: function() {
+                        console.log(" Inside error ");    
+                },
+            })
+}
 </script>
 </html>

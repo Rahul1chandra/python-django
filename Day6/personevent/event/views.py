@@ -4,12 +4,22 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views import View
 from event.models import Event
+from django.contrib.auth import authenticate, login, logout
+
+
+
 
 def index(request):   ### service  index 
     #return HttpResponse("my first page ....")
-
-    return render(request,  'login.html', context={} )
-
+    if request.method == 'GET':
+        return render(request,  'login.html', context={} )
+    else:
+        user_obj = authenticate(username= request.POST.get("username"), password=request.POST.get("password"))
+        if user_obj.is_authenticated:
+            login_obj = login(request, user_obj)
+            return JsonResponse({"user_auth": True})
+        else:
+            return JsonResponse({"user_auth": False})
 
 
 
@@ -20,6 +30,7 @@ class EventView(View):
         """
         event_obj = Event.objects.all()
         response_list = []
+        # import ipdb; ipdb.set_trace()
         for events in event_obj:
             response_list.append({"event_id": events.event_id, "event_name": events.event_name, "event_place": events.event_place })
         # print (response_list)

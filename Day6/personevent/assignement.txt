@@ -1,0 +1,13 @@
+1)  Read about the authentications and authorization 
+            authentications (user is know to us or not )
+                            ( candidate/superuser/annonymous )
+            
+            authorization (to check if user is having access to the particular page or not or actions ..)
+
+2) basic python questions 
+        2.1) Reverse a list/string
+        2.2) Difference between mutable and immuatable (objects- like String)
+        2.3) Implement oops concepts by using "food ordering application" ===  shell based applications 
+                    Implement //  user_food_request
+                            //    create a food menu   [ {name: "honeyginger_bread" : price: 500} ]
+        
