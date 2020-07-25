@@ -1,6 +1,10 @@
 
 Django Content:
     1) Installations of django and introduction (MVC and MVT--(   template  for non- restfull api ) )
+        Django authentications:
+        https://docs.djangoproject.com/en/3.0/topics/auth/default/
+    
+    
     2) Middleware (uses of middelware )
                     if we not authenticated 
                                 we are trying to access our user space
@@ -14,21 +18,38 @@ Django Content:
 
     3) Model  --- (database ), orm quries vs sql 
     4) view   --- (business logic of an application)
+    
+    
+    
     5) **Authentication (
             api Authentication,  
-            Basic authentication, (username and password based authentications)
+            Basic authentication, (username and password based authentications)  Django defined 
             api key authentication, 
             social media based authentication,
             OAuth based Authentication
             )
+
+
     6) Singals event (triggers in db operations )
         post transaction 
         pre transaction
 
     7) Third party usage of api's (smtp gmail api )
     
+    9) ** ORM vs ODM vs sql ** 
 
-    9) ORM vs ODM vs sql 
+    10) ** Global context **  (implementaions and usages ..)
+
+
+#####################################
+
+we have verified the username and password 
+based on that we are checking if the username is correct or not 
+
+##
+ we have not logged in our application 
+
+
 
 
 

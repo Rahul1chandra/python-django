@@ -1,0 +1,85 @@
+1) Introduction to sql (Structed query language)
+    > allows us to play(access, modifiy, manipulated ) with database 
+
+    > DDL, DML, DCL command in sql
+        data defination language()
+            create, drop, rename, alter
+        DML (data Manuplation language)
+            Insert, update, delete statements
+        TCL (Transaction control language)
+            Commit
+            Rollback
+            save Transaction
+        
+        DCL (date control language)
+            we can use this to give access permission and role
+        
+
+
+
+    > basic usage of sql and RDBMS
+
+2) where clause    
+     with "or" and "and"
+    # example : Event.objects.filter(event_name="<event_name>", event_place="<var1>")
+
+3)  order_by('asc')  ## Ascending or decending way
+    # event_query = Event.objects.filter()
+    # event_query.order_by('-event_name') 
+    # example : event_query.order_by('event_name')
+
+4) insert statement
+    we can use 
+    1st way:
+        event_obj = Event(...)
+        event_obj.save()
+    2nd way:
+        Event.objects.create(......)
+
+5) like 
+    Event.objects.filter(event_name__contains= "<>")
+    Event.objects.filter(event_name__icontains= "<>")
+
+6) in 
+    Event.objects.filter(pk__in =  [ , , ])
+    Event.objects.filter(pk__in=[14,17]) 
+
+7) between 
+    Event.objects.filter(event_start_date__date = datetime.datetime.date() )
+
+
+8) join (we can perform the forword query and reverse query)
+    ### 
+
+
+9) aggregate function (avg, min, max)
+    Event.objects.count()
+
+10) Delete a row 
+    obj = Event.objects.get(pk=1)
+    obj.delete()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

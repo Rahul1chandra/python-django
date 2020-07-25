@@ -1,0 +1,123 @@
+##1 ##
+Signals   ... ** triggers
+    An event.
+        > pre_save
+        > post_save
+        > pre_delete
+        > post_delete    ()
+        > ........... 
+    
+    Listener ... works as a producer (  )
+        receiver...(to identify if the events has occured or not )
+        sender  (Model)     
+        ....
+        ....
+
+## 2 ##
+Scheduler ** ... (Production )  
+        #  https://pypi.org/project/django-celery/
+        when we wanted to run /execute some certain set of functionality
+
+        Scheduler (it can run asycnorized manner )
+        we can Schedule jobs (run every 12 hours / 24 hours )
+        > celery  (this will be used for running periodic jobs  )
+        > celery  (redis server )
+        > djcelry 
+
+        00:00 (we wanted to create the backup of system )
+                1 step .. login in system
+                2 step .. create dump file for postgres / database
+                3 step ..sending/ stotring to presistance database (backup purpose)
+
+
+        Facebook (collected out informations )
+            facebook --  birtday wishes to us
+            machine   ".......  message ........."
+
+        1 subscription of prime membership ....   
+
+        today's date + 25 days user reminder if he /she has not renewed the subscription
+
+## 3 ##
+Global Context:
+    Context value which will be available across the application for the specific user
+                "{{ data_dict.value  }}"
+    Own context tags for rending the content on the template 
+
+    it could be a user specific (based on user configured data , we will be setting up the gloabl context)
+
+    Ex -  User needs some notifiction which is specific to the logged in user 
+         also it will be available across all the template 
+
+
+
+## 4 Django ORM  and sql ##
+
+
+sql is faster than ORM 
+ORM is build on top of sql 
+
+
+Object relational mapper 
+    one object is related to an another object (FK)
+
+    employee           N:1          departement
+
+   1, kunal ,HR                    1, HR, loc#1
+   2, priya .HR                    2, Eng, loc#2   
+   3, Sai ,Eng
+   4, raj ,Eng
+
+   forward query  vs reverse query 
+
+
+forward:   when your travesing from duplicate record ....... to.... unique record ### forward query 
+reverse:   when we are moving from unique record to duplicate record 
+
+
+## 5 intergration with 3rd party lib ###
+    we are using the services of 3rd party lib 
+    also, when we are requesting services from cross domin ..
+
+    event .....            but 
+    
+    push notifiction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

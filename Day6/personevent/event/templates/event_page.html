@@ -11,7 +11,10 @@
 <body>
 
     <div class="alert alert-primary" role="alert">
-        <h1> Event Management System  <span class="font-italic float-sm-right"> {{logged_in}} </span>
+        <h1> Event Management System  <span class="font-italic float-sm-right"> {{logged_in}} 
+
+            <button class="btn btn-dark"  onclick="logout()"> Logout </button>
+        </span>
             
         </h1>
        <marquee> <span id="current_time">  </span> </marquee>
@@ -176,6 +179,27 @@ event place: <input type="text" id="event_place" id="eventpalceid">
 
 
         }
+        function logout(){
+            
+            $.ajax({
+                url: "/logout/",
+                type: "POST",
+                data: { csrfmiddlewaretoken: '{{ csrf_token }}'},
+                success: function() {
+                    window.location.reload()   // just to get the updated value from the database
+                },
+                error: function() {
+                        console.log(" Inside error ");    
+                },
+            })
+
+
+
+        }
+
+
+
+
 
         setInterval(function(){ 
         var date = new Date();

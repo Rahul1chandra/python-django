@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views import View
 from event.models import Event
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.models import User
 
 
 
@@ -20,6 +20,25 @@ def index(request):   ### service  index
             return JsonResponse({"user_auth": True})
         else:
             return JsonResponse({"user_auth": False})
+
+def logoutView(request):
+    logout_auth = logout(request)
+    return JsonResponse({"status": 201, "message": "user got logged out !"})
+
+
+def signup(request):
+    import ipdb; ipdb.set_trace()
+    # https://docs.djangoproject.com/en/3.0/topics/auth/default/
+    if request.method == 'POST':
+        user_obj = User(username=request.POST.get('username'), 
+                        email=request.POST.get('email'),
+                        password=request.POST.get('password'))
+        user_obj.save()
+        return JsonResponse({})
+
+
+
+
 
 
 
