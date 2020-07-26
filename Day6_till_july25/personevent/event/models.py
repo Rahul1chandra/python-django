@@ -14,8 +14,8 @@ class Event(models.Model):
 
 
 
-class Personal(models.Model):
-    name  =  models.CharField(max_length=122)
+# class Personal(models.Model):
+#     name  =  models.CharField(max_length=122)
 
 
 

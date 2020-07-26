@@ -1,4 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
+
 <html>
     <head>
         <title>
@@ -9,20 +12,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
  </head>
 <body>
-
-    <div class="alert alert-primary" role="alert">
-        <h1> Event Management System  <span class="font-italic float-sm-right"> {{logged_in}} 
-
-            <button class="btn btn-dark"  onclick="logout()"> Logout </button>
-        </span>
-            
-        </h1>
-       <marquee> <span id="current_time">  </span> </marquee>
-
-
-      </div>
-
-
 
 
 <div class="container">
@@ -197,10 +186,6 @@ event place: <input type="text" id="event_place" id="eventpalceid">
 
         }
 
-
-
-
-
         setInterval(function(){ 
         var date = new Date();
         $('#current_time').text(date.toString());
@@ -214,3 +199,4 @@ event place: <input type="text" id="event_place" id="eventpalceid">
 
 </body>
 </html>
+{% endblock %}

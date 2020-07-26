@@ -41,6 +41,10 @@
 <!--===============================================================================================-->
 </head>
 <body>
+
+	<div class="alert alert-dark" role="alert">
+		Sign In ExpoData Labs	
+	</div>
 	
 	<div class="limiter">
 		<div class="container-login100">
@@ -129,7 +133,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <!-- <h4 class="modal-title">Modal Header</h4> -->
+          <h4 class="modal-title">Please Register</h4>
         </div>
         <div class="modal-body">
 
@@ -160,7 +164,7 @@
         <div class="modal-footer">
             <!-- <input type="button" value="submit" class="btn btn-primary" onclick="event_save_edit_delete('add')">  -->
 
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" class='fas fa-share' data-dismiss="modal">Close</button>
         </div>
       </div>
       
@@ -187,6 +191,12 @@ function signup(){
                 data: data,
                 success: function(data) {
 						console.log("inside the success");
+						if (data.status){
+							alert("account created");
+						}
+						else{
+							alert("Failure");
+						}
                 },
                 error: function() {
                         console.log(" Inside error ");    
@@ -208,9 +218,12 @@ call_login = () => {
 				},
                 success: function(data) {
 					if (data.user_auth){
-						// user is authenticated
-						alert("welcome user ");
-						window.location = '/eventpage/';
+						//debugger;
+						$('.alert-dark').html(data.user);
+						setTimeout(function(data){
+							window.location = '/eventpage/';
+						}, 3000)
+						
 					}
 					else{
 						alert("Error username or password");

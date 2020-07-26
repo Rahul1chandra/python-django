@@ -1,0 +1,78 @@
+{% load static %}
+<html>
+    <head>
+        <title>Django</title>
+        <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
+        <script src="{% static 'js/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+
+
+
+    </head>
+    <body>
+        <!-- <div class="page-header"> -->
+            
+            <div class="alert alert-primary" role="alert">
+                <h1> Event Management System  <span class="font-italic float-sm-right"> {{user}} 
+        
+                    <button class="btn btn-dark"  onclick="logout()"> Logout </button>
+                </span>
+                </h1>
+               <marquee> <span id="current_time"> </span> </marquee>
+                
+               <a href="/dashboard" class="badge badge-primary">dashboard</a>
+               <a href="/eventpage/" class="badge badge-primary">eventpage</a>
+               <a href="/viewtest/" class="badge badge-primary">viewtest</a>
+               
+               last login on :: {{last_login}}
+
+            </div>
+
+
+        <!-- </div> -->
+        <div class="content container">
+                    {% block content %}
+                    {% endblock %}
+        </div>
+        <div class="alert alert-primary" role="alert">
+            <a href="#" class="badge badge-primary">help</a>
+            <a href="#" class="badge badge-secondary">faq</a>
+            <a href="#" class="badge badge-success">contact us</a>  
+        </div>
+    </body>
+
+
+
+<script>
+   
+   function logout(){
+            
+            $.ajax({
+                url: "/logout/",
+                type: "POST",
+                data: { csrfmiddlewaretoken: '{{ csrf_token }}'},
+                success: function() {
+                    window.location.reload()   // just to get the updated value from the database
+                },
+                error: function() {
+                        console.log(" Inside error ");    
+                },
+            })
+
+
+
+        }
+
+        setInterval(function(){ 
+        var date = new Date();
+        $('#current_time').text(date.toString());
+        }, 1000)
+        
+</script>
+
+</html>

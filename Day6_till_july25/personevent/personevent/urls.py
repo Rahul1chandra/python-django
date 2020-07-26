@@ -20,5 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('configurations/', include('projectConfig.urls') )
+
     path('', include('event.urls')),   # application checks here .........  /eventpage/
 ]

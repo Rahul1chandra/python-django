@@ -17,9 +17,9 @@ def index(request):   ### service  index
         user_obj = authenticate(username= request.POST.get("username"), password=request.POST.get("password"))
         if user_obj.is_authenticated:
             login_obj = login(request, user_obj)
-            return JsonResponse({"user_auth": True})
+            return JsonResponse({"user_auth": True, "user": request.POST.get("username")})
         else:
-            return JsonResponse({"user_auth": False})
+            return JsonResponse({"user_auth": False, "user": "user incorrect !! "})
 
 def logoutView(request):
     logout_auth = logout(request)
@@ -27,19 +27,17 @@ def logoutView(request):
 
 
 def signup(request):
-    import ipdb; ipdb.set_trace()
     # https://docs.djangoproject.com/en/3.0/topics/auth/default/
     if request.method == 'POST':
-        user_obj = User(username=request.POST.get('username'), 
-                        email=request.POST.get('email'),
-                        password=request.POST.get('password'))
-        user_obj.save()
-        return JsonResponse({})
-
-
-
-
-
+        # import ipdb; ipdb.set_trace() 
+        try:
+            user_obj = User(username=request.POST.get('username'), 
+                            email=request.POST.get('email'),
+                            password=request.POST.get('password'))
+            user_obj.save()
+            return JsonResponse({"data":"success","status":201})
+        except Exception as er:
+            return JsonResponse({"data": "failure", "status":400})
 
 
 class EventView(View):
@@ -53,7 +51,7 @@ class EventView(View):
         for events in event_obj:
             response_list.append({"event_id": events.event_id, "event_name": events.event_name, "event_place": events.event_place })
         # print (response_list)
-        return render(request,  'event_page.html', context={"event_list": response_list, "logged_in":request.user.get_username() } )
+        return render(request,  'event_page.html', context={"event_list": response_list} )
     
     
     def post(self, request):
@@ -80,3 +78,14 @@ class EventView(View):
             event = Event.objects.get(event_id= request.POST.get('event_id'))
             event.delete()
             return JsonResponse({"create":True, "status_code": 201, "created_by": request.user.username })
+
+
+
+def dashboard(request):
+    if request.method == 'GET':
+        return render(request, 'test.html', context={})
+
+
+def viewtest(request):
+    if request.method == 'GET':
+        return render(request, 'myapplication.html', context={})
