@@ -127,6 +127,14 @@ STATIC_URL = '/static/'
 
 
 
+
+
+
+SMTP_USERNAME = 'djangoapprahul@gmail.com'
+ACCOUNT_PASSWORD = 'Cha560037KA!'
+
+
+
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, "static"),
     

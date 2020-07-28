@@ -1,3 +1,6 @@
+
+#########################################  Assignment # 1 ###############################
+
 1)  Read about the authentications and authorization 
             authentications (user is know to us or not )
                             ( candidate/superuser/annonymous )
@@ -11,3 +14,54 @@
                     Implement //  user_food_request
                             //    create a food menu   [ {name: "honeyginger_bread" : price: 500} ]
         
+
+
+#########################################  Assignment # 2 ###############################
+
+1) Understand the how internet work, keeping OSI model in mind.
+
+2) Understand middleware 
+                write your own middleware ----logger (we can write the logger in file )
+
+3) Read and wtite your custom signals(post_save(), pre_Save()) 
+
+4) Understand the sql vs orm for django 
+
+5) explore any site for Understanding of css, js, html layout, using google chrome tool.
+
+
+
+################################ Assignment # 3 #########################################
+
+1) Create simple django website and perform 
+                GET, POST 
+                Create, Read, Update, Delete 
+
+2) 
+
+
+
+################################# Assignement #4 #########################################
+
+#)  SOLID principle
+
+
+
+
+
+
+#################  SIGNALS ###############################3
+
+
+EVENTS OCCURS 
+        -- CREATATION, DELETION, UPDATE
+        -- CREATATION OF USER 
+                -- TRY TO VERFIY THE USER 
+                -- SEND SOME NOTIFICATION TO THE USER 
+                -- CREATE SOME SET OF PROFILE CONFIGUATUIONS 
+
+SIGNALS:
+        RECEIVER: MY "CALLBACK API" FUNCTION ##
+        SENDER :  SENDER COULD BE ANY MODEL (USER, SPECIFIC USER DEFINED MODEL)
+        weak=True :
+        dispatch_uid :

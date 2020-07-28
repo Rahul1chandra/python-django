@@ -6,7 +6,7 @@ from django.views import View
 from event.models import Event
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-
+from event.notifications import mailnotification
 
 
 def index(request):   ### service  index 
@@ -17,6 +17,10 @@ def index(request):   ### service  index
         user_obj = authenticate(username= request.POST.get("username"), password=request.POST.get("password"))
         if user_obj.is_authenticated:
             login_obj = login(request, user_obj)
+            # Step 1: get the user_mail id from the user_obj
+            # Step 2: import the common sendmessage function here mailnotification()
+            # Step 3: compose the message and send to the user 
+            # Step 4: mailnotification('Welcome to  the app', ['xyx@gmail.com','exop@expodatalabs.com'] )
             return JsonResponse({"user_auth": True, "user": request.POST.get("username")})
         else:
             return JsonResponse({"user_auth": False, "user": "user incorrect !! "})
